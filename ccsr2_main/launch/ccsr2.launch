@@ -1,8 +1,8 @@
 <launch>
   <group>
 
-  <include file="$(find ccsr2)/launch/differential_drive.launch" />
-  <include file="$(find ccsr2)/launch/pi.launch" />
+  <include file="$(find ccsr2_main)/launch/differential_drive.launch" />
+  <include file="$(find ccsr2_main)/launch/pi.launch" />
 
   </group>
 

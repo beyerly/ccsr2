@@ -4,6 +4,7 @@
 #include "ros/ros.h"
 #include "std_msgs/Float32.h"
 #include "ccsr2_pi_sensact_hub/motor_driver.h"
+#include "ccsr2_hub/motorAcceleration.h"
 #include <sstream>
 
 
@@ -55,6 +56,7 @@ motorDriver::motorDriver() {
 void motorDriver::updateSpeed(const std_msgs::Float32& msg) {
 
    int motor_cmd = (int) ceil(msg.data);
+   motor_cmd = -motor_cmd;
    if (-127 <= motor_cmd < 127){
       ROS_INFO("Setting speed for %s motor to %d", motor.c_str(), motor_cmd);
 
@@ -82,7 +84,7 @@ void motorDriver::updateSpeed(const std_msgs::Float32& msg) {
 
 
 
- bool motorDriver::setMotorAccelerationCallback(ccsr2_pi_sensact_hub::motorAcceleration::Request& req, ccsr2_pi_sensact_hub::motorAcceleration::Response& res) {
+ bool motorDriver::setMotorAccelerationCallback(ccsr2_hub::motorAcceleration::Request& req, ccsr2_hub::motorAcceleration::Response& res) {
     if (noRobotHw) {
        ROS_INFO("No Robot hardware. %s motor_driver acceleration would be set to %d", motor.c_str(), req.acceleration);
     }

@@ -1,6 +1,8 @@
 <launch>
  
- <rosparam param="ticks_meter">16000</rosparam>
+ <rosparam param="ticks_meter">68985</rosparam>
+ 
+  
  
  <node pkg="differential_drive" type="pid_velocity.py" name="lpid_velocity">
      <remap from="wheel" to="lwheel"/>
@@ -30,8 +32,6 @@
      <rosparam param="timeout_ticks">4</rosparam>
      <rosparam param="rolling_pts">5</rosparam>
  </node>
-
-
 
  
  <node pkg="differential_drive" type="virtual_joystick.py" name="virtual_joystick" output="screen"/>

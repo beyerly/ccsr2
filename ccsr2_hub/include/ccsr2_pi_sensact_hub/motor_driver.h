@@ -4,7 +4,7 @@
 #include "ros/ros.h"
 #include "std_msgs/Float32.h"
 #include <std_srvs/SetBool.h>
-#include "ccsr2_pi_sensact_hub/motorAcceleration.h"
+#include "ccsr2_hub/motorAcceleration.h"
 #include <sstream>
 
 #define MD22_I2C_ADDRESS           0x58
@@ -36,7 +36,7 @@ class motorDriver {
       int speed_reg;
       ros::ServiceServer setMotorAcceleration_srv_;
       ros::ServiceServer enableMotors_srv_;
-      bool setMotorAccelerationCallback(ccsr2_pi_sensact_hub::motorAcceleration::Request&, ccsr2_pi_sensact_hub::motorAcceleration::Response&);
+      bool setMotorAccelerationCallback(ccsr2_hub::motorAcceleration::Request&, ccsr2_hub::motorAcceleration::Response&);
       bool enableMotorsCallback(std_srvs::SetBool::Request&, std_srvs::SetBool::Response&);
 
    public:

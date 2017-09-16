@@ -1,12 +1,13 @@
 #include "ros/ros.h"
 #include "std_msgs/Int16.h"
 #include <iostream>
-
+#include <std_srvs/Empty.h>
+#include "std_msgs/Float32.h"
 #include <sstream>
-#include <wiringPi.h>
+#include <wiringPiSPI.h>
 
-#define LWHEELENCODER_SPI_PORT 0
-#define RWHEELENCODER_SPI_PORT 1
+#define RWHEELENCODER_SPI_PORT 0
+#define LWHEELENCODER_SPI_PORT 1
 #define SPI_SPEED 500000
 
 //****************************STR(Status Register ) 8 bit*********************************
@@ -146,12 +147,16 @@ class wheelEncoder {
       // Need to make the ros node a pointer, such that it does not get constructed as global static variable before ros is initialized
       ros::NodeHandle n;
       ros::Publisher wheel_pub;
-      ros::Subscriber twist;
-      int wheel_count;
+      ros::Subscriber motor_cmd;
+      ros::ServiceServer resetWheelCount_srv_;
+      unsigned int wheel_count;
       std::string wheel;
       int spiPort;
       wheelEncoder();   
-      void updateEncoder();
-      int buffToInteger(char * buffer)
+      void updateEncoder(const std_msgs::Float32& msg);
+      unsigned int buffToInteger(unsigned char * buffer);
+      bool resetWheelCountCallback(std_srvs::Empty::Request& req, std_srvs::Empty::Response& resp);
+      void resetWheelCount();
+
 };
 
