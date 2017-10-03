@@ -134,7 +134,7 @@ void wheelEncoder::updateEncoder(const std_msgs::Float32& msg) {
    wheel_count = buffToInteger(data);
    std_msgs::Int16 whlmsg;  // @@ increase to 32b?
    whlmsg.data = (int) (0xFFFF & wheel_count) - 32768;
-   ROS_INFO("%s wheel_encoder at %d %d", wheel.c_str(), wheel_count, whlmsg.data);
+   // ROS_INFO("%s wheel_encoder at %d %d", wheel.c_str(), wheel_count, whlmsg.data);
    wheelEncoder::wheel_pub.publish(whlmsg);
 }
 

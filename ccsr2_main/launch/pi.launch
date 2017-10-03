@@ -1,40 +1,10 @@
 <launch>
 
   <group>
-    <machine name="pi" address="robert-pi" user="pi"  env-loader="/home/pi/ros/ros_setup.sh" default="true" />
-
-    <node pkg="ccsr2_hub" name="lwheel_encoder" type="wheel_encoder" machine="pi">
-<param name="wheel" value="lwheel"/>
-    </node>
-    <node pkg="ccsr2_hub" name="rwheel_encoder" type="wheel_encoder" machine="pi">
-<param name="wheel" value="rwheel"/>
-    </node>
-
-
-    <node pkg="ccsr2_hub" name="lmotor_driver" type="motor_driver" machine="pi">
-        <param name="motor" value="lmotor"/>
-        <param name="no_robot_hw" value="True"/>
-    </node>
-    <node pkg="ccsr2_hub" name="rmotor_driver" type="motor_driver" machine="pi">
-        <param name="motor" value="rmotor"/>
-        <param name="no_robot_hw" value="True"/>
-    </node>
-
-
-<!--
-
- <node pkg="ccsr2_hub" type="wheel_encoder_sim" name="rwheel_encoder_sim">
-    <remap from="wheel" to="rwheel"/> 
-     <remap from="motor_cmd" to="rmotor_cmd"/>
- </node>
- <node pkg="ccsr2_hub" type="wheel_encoder_sim" name="lwheel_encoder_sim">
-    <remap from="wheel" to="lwheel"/> 
-     <remap from="motor_cmd" to="lmotor_cmd"/>
- </node>
--->
-
-
-
+    <machine name="pi" address="robert-pi" user="pi"  env-loader="/home/pi/ros/ros_setup.sh" default="true" timeout="20"/>
+    <include file="$(find ccsr2_main)/launch/differential_drive.launch" />
+    <include file="$(find ccsr2_main)/launch/ccsr2_hub.launch" />
+    <include file="$(find i2c_imu)/launch/i2c_imu.launch" />
   </group>
 
 </launch>

@@ -6,5 +6,7 @@
     <node pkg="rqt_publisher" name="rqt_publisher" type="rqt_publisher"/>
     <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot" args="/rwheel_vtarget /rwheel_vel /lwheel_vtarget /lwheel_vel" />
 
+    <node pkg="differential_drive" type="virtual_joystick.py" name="virtual_joystick" output="screen"/>
+    <node pkg="rviz" type="rviz" name="rviz" />
 
 </launch>

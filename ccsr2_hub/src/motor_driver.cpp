@@ -58,7 +58,7 @@ void motorDriver::updateSpeed(const std_msgs::Float32& msg) {
    int motor_cmd = (int) ceil(msg.data);
    motor_cmd = -motor_cmd;
    if (-127 <= motor_cmd < 127){
-      ROS_INFO("Setting speed for %s motor to %d", motor.c_str(), motor_cmd);
+      //ROS_INFO("Setting speed for %s motor to %d", motor.c_str(), motor_cmd);
 
       if (noRobotHw) {
          ROS_INFO("No Robot hardware. %s motor_driver would be set to %d", motor.c_str(), motor_cmd);
@@ -69,7 +69,7 @@ void motorDriver::updateSpeed(const std_msgs::Float32& msg) {
                ROS_ERROR("Failed to write to I2C device %d on register %d", i2c_dev, speed_reg);
             }
             else {
-               ROS_INFO("%s motor_driver set to %d", motor.c_str(), motor_cmd);
+               //ROS_INFO("%s motor_driver set to %d", motor.c_str(), motor_cmd);
             }
          }
          else {

@@ -1,5 +1,8 @@
 <launch>
  
+   <group>
+ 
+ 
  <rosparam param="ticks_meter">68985</rosparam>
  
   
@@ -15,8 +18,8 @@
      <rosparam param="out_min">-127</rosparam>
      <rosparam param="out_max">127</rosparam>
      <rosparam param="rate">30</rosparam>
-     <rosparam param="timeout_ticks">4</rosparam>
-     <rosparam param="rolling_pts">5</rosparam>
+     <rosparam param="timeout_ticks">10</rosparam>
+     <rosparam param="rolling_pts">10</rosparam>
  </node>
  <node pkg="differential_drive" type="pid_velocity.py" name="rpid_velocity">
      <remap from="wheel" to="rwheel"/>
@@ -29,14 +32,17 @@
      <rosparam param="out_min">-127</rosparam>
      <rosparam param="out_max">127</rosparam>
      <rosparam param="rate">30</rosparam>
-     <rosparam param="timeout_ticks">4</rosparam>
-     <rosparam param="rolling_pts">5</rosparam>
+     <rosparam param="timeout_ticks">10</rosparam>
+     <rosparam param="rolling_pts">10</rosparam>
  </node>
 
- 
- <node pkg="differential_drive" type="virtual_joystick.py" name="virtual_joystick" output="screen"/>
- <node pkg="differential_drive" type="twist_to_motors.py" name="twist_to_motors" output="screen">
-   <rosparam param="base_width">0.245</rosparam>
- </node>
+
+
+
+ </group>
+
+
+
+
 
  </launch>
