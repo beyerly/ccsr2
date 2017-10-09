@@ -99,16 +99,10 @@ void wheelEncoder::resetWheelCount(){
        ROS_ERROR("Failed to read to SPI port %d", spiPort);
     }
 
-    ROS_INFO(" MDR %u",  data[1]);
     data[0] = RD_STR;
     if (wiringPiSPIDataRW (spiPort, data, 2) < 0){
        ROS_ERROR("Failed to read to SPI port %d", spiPort);
     }
-
-    ROS_INFO(" STR %u",  data[1]);
-
-
-
 }
 
 

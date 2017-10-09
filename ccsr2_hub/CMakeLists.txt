@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(ccsr2_hub)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -208,10 +208,12 @@ add_executable(wheel_encoder src/wheel_encoder.cpp)
 add_executable(motor_driver src/motor_driver.cpp)
 add_executable(power_monitor src/power_monitor.cpp)
 add_executable(temp_sensor src/temp_sensor.cpp)
+add_executable(range_sensors src/range_sensors.cpp)
 target_link_libraries(wheel_encoder_sim ${catkin_LIBRARIES})
 target_link_libraries(wheel_encoder ${catkin_LIBRARIES} wiringPi)
 target_link_libraries(motor_driver ${catkin_LIBRARIES} wiringPi)
 target_link_libraries(power_monitor ${catkin_LIBRARIES} wiringPi)
 target_link_libraries(temp_sensor ${catkin_LIBRARIES} wiringPi)
+target_link_libraries(range_sensors ${catkin_LIBRARIES} wiringPi)
 # add_dependencies(talker beginner_tutorials_generate_messages_cpp)
 

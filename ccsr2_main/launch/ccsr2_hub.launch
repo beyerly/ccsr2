@@ -1,5 +1,7 @@
 <launch>
 
+    <node name="range_sensors" pkg="ccsr2_hub" type="range_sensors">
+	</node>
     <node name="temp_sensor" pkg="ccsr2_hub" type="temp_sensor">
       <param name="frame_id" value="ccsr2_base" />
 	</node>

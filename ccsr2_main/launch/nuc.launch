@@ -4,13 +4,16 @@
   <include file="$(find rplidar_ros)/launch/rplidar.launch" />
 
  <node pkg="differential_drive" type="diff_tf.py" name="diff_tf">
-      <rosparam param="odom_frame_id">"ccsr2_base"</rosparam>
+<!--
+      <rosparam param="odom_frame_id">"base_link"</rosparam>
+      <rosparam param="base_frame_id">"odom"</rosparam>
+      -->
  </node>
-
  
  <node pkg="differential_drive" type="twist_to_motors.py" name="twist_to_motors">
    <rosparam param="base_width">0.245</rosparam>
  </node>
 
+ <node pkg="ccsr2_main" type="tf_broadcaster" name="tf_broadcaster"/>
 
 </launch>
