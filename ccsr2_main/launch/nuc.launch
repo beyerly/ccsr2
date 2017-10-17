@@ -1,6 +1,10 @@
 <launch>
 
  <machine name="nuc" address="robert-nuc" user="robert"  env-loader="/home/robert/ros/ros_setup.sh" default="true" />
+
+
+
+
   <include file="$(find rplidar_ros)/launch/rplidar.launch" />
 
  <node pkg="differential_drive" type="diff_tf.py" name="diff_tf">
@@ -14,6 +18,18 @@
    <rosparam param="base_width">0.245</rosparam>
  </node>
 
+  <include file="$(find ccsr2_main)/launch/tf_static_transforms.launch" />
+
+
+<!--
+<include file="$(find ccsr2_main)/launch/test.launch" />
+
  <node pkg="ccsr2_main" type="tf_broadcaster" name="tf_broadcaster"/>
+-->
+
+
+  <include file="$(find ccsr2_main)/launch/libuvc_camera.launch" />
+  
+
 
 </launch>

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(ccsr2_main)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+ add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -13,6 +13,8 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   message_generation
   tf
+  image_transport
+  cv_bridge
 )
 
 ## System dependencies are found with CMake's conventions
@@ -106,7 +108,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS /home/robert/anaconda3/include/
 #  LIBRARIES ccsr2_main
    CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
 #  DEPENDS system_lib
@@ -207,6 +209,12 @@ include_directories(
 
 include_directories(include ${catkin_INCLUDE_DIRS})
 
+add_library(face_recognition src/face_recognition.cpp)
+
+
+
 add_executable(tf_broadcaster src/tf_broadcaster.cpp)
+add_executable(image_annotation src/image_annotation.cpp)
 target_link_libraries(tf_broadcaster ${catkin_LIBRARIES})
+target_link_libraries(image_annotation ${catkin_LIBRARIES} opencv_core opencv_highgui opencv_imgproc face_recognition)
 

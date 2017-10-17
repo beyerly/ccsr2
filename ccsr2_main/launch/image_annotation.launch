@@ -1,0 +1,9 @@
+<launch>
+
+ <machine name="nuc" address="robert-nuc" user="robert"  env-loader="/home/robert/ros/ros_setup.sh" default="true" />
+ 
+<node pkg="ccsr2_main" type="image_annotation" name="image_annotation"  output="screen"/>
+
+
+
+</launch>
