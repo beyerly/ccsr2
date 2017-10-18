@@ -71,6 +71,7 @@ class powerMonitor {
       double getBatteryVoltage();
       double getOperatingCurrent();
       void publishPower();
+      double clip(double value, double max, double min);
 };
 
 

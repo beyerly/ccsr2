@@ -2,11 +2,11 @@
 
     <node pkg="rviz" type="rviz" name="rviz" />
     <node pkg="rqt_console" name="rqt_console" type="rqt_console"/>
+    <node pkg="rqt_publisher" name="rqt_publisher" type="rqt_publisher"/>
 <!-- 
     <node pkg="rqt_tf_tree" name="rqt_tf_tree" type="rqt_tf_tree"/>
     <node pkg="rqt_logger_level" name="rqt_logger_level" type="rqt_logger_level"/>
     <node pkg="rqt_graph" name="rqt_graph" type="rqt_graph"/>
-    <node pkg="rqt_publisher" name="rqt_publisher" type="rqt_publisher"/>
     <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot" args="/rwheel_vtarget /rwheel_vel /lwheel_vtarget /lwheel_vel" />
     -->
 

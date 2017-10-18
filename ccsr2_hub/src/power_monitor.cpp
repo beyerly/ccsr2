@@ -51,7 +51,15 @@ uint8   power_supply_health     # The battery health metric. Values defined abov
    return 1;
 }
 
-
+double powerMonitor::clip(double value, double max, double min){
+   if (value > max) {
+      return max;
+   }
+   else if (value < min) {
+      return min;
+   }
+   return value;
+}
 
 double powerMonitor::getBatteryVoltage() {
 
@@ -117,6 +125,8 @@ void powerMonitor::publishPower() {
 
    pmon_msg.voltage  =    getBatteryVoltage(); //      # Voltage in Volts (Mandatory)
    pmon_msg.current   =  getOperatingCurrent(); //      # Negative when discharging (A)  (If unmeasured NaN)
+   pmon_msg.percentage =  clip(pmon_msg.voltage/12.0, 1, 0);  // @@ not accurate, needs fixing
+
    /*   float32 charge           # Current charge in Ah  (If unmeasured NaN)
    float32 percentage       # Charge percentage on 0 to 1 range  (If unmeasured NaN)
     */
