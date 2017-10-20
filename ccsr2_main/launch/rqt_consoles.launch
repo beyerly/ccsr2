@@ -1,5 +1,5 @@
 <launch>
-
+    <param name="robot_description" command="cat $(find ccsr2_main)/model.xml" />
     <node pkg="rviz" type="rviz" name="rviz" />
     <node pkg="rqt_console" name="rqt_console" type="rqt_console"/>
     <node pkg="rqt_publisher" name="rqt_publisher" type="rqt_publisher"/>

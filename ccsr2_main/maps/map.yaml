@@ -1,0 +1,6 @@
+image: /home/robert/catkin_ws/src/ccsr2/ccsr2_main/images/basic_localization_stage_ground_truth.png
+resolution: 0.1
+origin: [-200.0, -200.0, 0.0]
+occupied_thresh: 0.1
+free_thresh: 0.0
+negate: 0

@@ -12,8 +12,11 @@
 #include <string>
 #include <iomanip>
 #include <math.h>
+#include <tf/transform_broadcaster.h>
 
 #include "face_recognition.h"
+
+#define PI 3.14159265359
 
 static const std::string OPENCV_WINDOW = "Image window";
 
@@ -77,11 +80,18 @@ public:
       int fontFace = cv::FONT_HERSHEY_PLAIN;
       double fontScale = 1;
       int thickness = 1;
+      double roll, pitch, yaw;
+
+      tf::Quaternion q;
+      tf::quaternionMsgToTF(odom.pose.pose.orientation, q);
+      tf::Matrix3x3 mat(q);
+      mat.getRPY(roll, pitch, yaw);
 
       sensors.push_back("Temp: " + to_string_with_precision(temperature.temperature, 2) + "C");
       sensors.push_back("Current: " + to_string_with_precision(batteryState.current, 2) + "A");
       sensors.push_back("Batt: " + std::to_string((int) floor(100*batteryState.percentage)) + "%");
       sensors.push_back("Speed lin: " + to_string_with_precision(odom.twist.twist.linear.x,  2) + "m/s ang: " + to_string_with_precision(odom.twist.twist.angular.z,  2) + "m/s");
+      sensors.push_back("Odom x: " + to_string_with_precision(odom.pose.pose.position.x,  2) + " y " + to_string_with_precision(odom.pose.pose.position.y,  2) + " hd: " + std::to_string((int) floor(360*(yaw+PI)/(2*PI))) + "deg");
       cv::Point textOrg(10, 30);
       cv::Size textSize = cv::getTextSize(sensors[0], fontFace, fontScale, thickness, NULL);
       for (int i=0; i<sensors.size(); i++){

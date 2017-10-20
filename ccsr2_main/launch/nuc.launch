@@ -3,7 +3,10 @@
  <machine name="nuc" address="robert-nuc" user="robert"  env-loader="/home/robert/ros/ros_setup.sh" default="true" />
 
 
+<arg name="map_file" default="$(find ccsr2_main)/maps/map.yaml"/>
 
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
   <include file="$(find rplidar_ros)/launch/rplidar.launch" />
 
