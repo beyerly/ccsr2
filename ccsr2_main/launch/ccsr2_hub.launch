@@ -1,25 +1,4 @@
 <launch>
 
-    <node name="range_sensors" pkg="ccsr2_hub" type="range_sensors">
-	</node>
-    <node name="temp_sensor" pkg="ccsr2_hub" type="temp_sensor">
-      <param name="frame_id" value="ccsr2_base" />
-	</node>
-  	<node name="power_monitor" pkg="ccsr2_hub" type="power_monitor">
-      <param name="frame_id" value="ccsr2_base" />
-	</node>
-    <node pkg="ccsr2_hub" name="lwheel_encoder" type="wheel_encoder" machine="pi">
-       <param name="wheel" value="lwheel"/>
-    </node>
-    <node pkg="ccsr2_hub" name="rwheel_encoder" type="wheel_encoder" machine="pi">
-      <param name="wheel" value="rwheel"/>
-    </node>
-    <node pkg="ccsr2_hub" name="lmotor_driver" type="motor_driver" machine="pi">
-       <param name="motor" value="lmotor"/>
-       <param name="no_robot_hw" value="True"/>
-    </node>
-    <node pkg="ccsr2_hub" name="rmotor_driver" type="motor_driver" machine="pi">
-       <param name="motor" value="rmotor"/>
-       <param name="no_robot_hw" value="True"/>
-    </node>
+
 </launch>

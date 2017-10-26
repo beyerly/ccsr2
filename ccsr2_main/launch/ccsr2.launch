@@ -1,10 +1,11 @@
 <launch>
-  <group>
-  <include file="$(find ccsr2_main)/launch/pi.launch" />
-  <include file="$(find ccsr2_main)/launch/nuc.launch" />
-  
-  
-  
-  
-  </group>
+    <machine name="pi" address="robert-pi" user="pi"  env-loader="/home/pi/ros/ros_setup.sh" default="true"/>
+	<machine name="nuc" address="robert-nuc" user="robert"  env-loader="/home/robert/ros/ros_setup.sh" default="true" />
+
+	<include file="$(find ccsr2_main)/launch/odometry.launch" />
+	<include file="$(find ccsr2_main)/launch/sensors.launch" />
+	<include file="$(find ccsr2_main)/launch/motor_driver.launch" />
+	<include file="$(find ccsr2_main)/launch/differential_drive.launch" />  
+	<include file="$(find ccsr2_main)/launch/tf_static_transforms.launch" />
+	<include file="$(find ccsr2_main)/launch/navigation.launch" />
 </launch>

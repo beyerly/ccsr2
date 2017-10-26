@@ -1,38 +1,34 @@
 <launch>
 
- <machine name="nuc" address="robert-nuc" user="robert"  env-loader="/home/robert/ros/ros_setup.sh" default="true" />
+	<machine name="nuc" address="robert-nuc" user="robert"  env-loader="/home/robert/ros/ros_setup.sh" default="true" />
+	
+	
 
+ 	<include file="$(find rplidar_ros)/launch/rplidar.launch" />
 
-<arg name="map_file" default="$(find ccsr2_main)/maps/map.yaml"/>
-
-  <!-- Run the map server -->
-  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
-
-  <include file="$(find rplidar_ros)/launch/rplidar.launch" />
-
- <node pkg="differential_drive" type="diff_tf.py" name="diff_tf">
-<!--
-      <rosparam param="odom_frame_id">"base_link"</rosparam>
-      <rosparam param="base_frame_id">"odom"</rosparam>
-      -->
- </node>
+ 	<node pkg="differential_drive" type="diff_tf.py" name="diff_tf">
+	<!--
+    	<rosparam param="odom_frame_id">"base_link"</rosparam>
+      	<rosparam param="base_frame_id">"odom"</rosparam>
+    -->
+ 	</node>
  
- <node pkg="differential_drive" type="twist_to_motors.py" name="twist_to_motors">
-   <rosparam param="base_width">0.245</rosparam>
- </node>
+ 	<node pkg="differential_drive" type="twist_to_motors.py" name="twist_to_motors">
+   		<rosparam param="base_width">0.245</rosparam>
+ 	</node>
 
-  <include file="$(find ccsr2_main)/launch/tf_static_transforms.launch" />
-
-
-<!--
-<include file="$(find ccsr2_main)/launch/test.launch" />
-
- <node pkg="ccsr2_main" type="tf_broadcaster" name="tf_broadcaster"/>
--->
+  	<include file="$(find ccsr2_main)/launch/tf_static_transforms.launch" />
+	<include file="$(find ccsr2_main)/launch/libuvc_camera.launch" />
 
 
-  <include file="$(find ccsr2_main)/launch/libuvc_camera.launch" />
+
+
+	<!--
+		<include file="$(find ccsr2_main)/launch/test.launch" />
+		<node pkg="ccsr2_main" type="tf_broadcaster" name="tf_broadcaster"/>
+	<include file="$(find ccsr2_main)/launch/navigation.launch" />
+	-->
+
   
-
 
 </launch>

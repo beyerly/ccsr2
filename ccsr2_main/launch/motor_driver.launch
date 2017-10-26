@@ -1,0 +1,10 @@
+<launch>
+    <node pkg="ccsr2_hub" name="lmotor_driver" type="motor_driver" machine="pi">
+       <param name="motor" value="lmotor"/>
+       <param name="no_robot_hw" value="True"/>
+    </node>
+    <node pkg="ccsr2_hub" name="rmotor_driver" type="motor_driver" machine="pi">
+       <param name="motor" value="rmotor"/>
+       <param name="no_robot_hw" value="True"/>
+    </node>
+</launch>
