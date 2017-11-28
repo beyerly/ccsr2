@@ -3,6 +3,7 @@
 #include <wiringPiI2C.h>
 #include "ros/ros.h"
 #include "std_msgs/Float32.h"
+#include "std_msgs/Bool.h"
 #include <std_srvs/SetBool.h>
 #include "ccsr2_hub/motorAcceleration.h"
 #include <sstream>
@@ -36,6 +37,8 @@ class motorDriver {
       int speed_reg;
       ros::ServiceServer setMotorAcceleration_srv_;
       ros::ServiceServer enableMotors_srv_;
+      ros::Publisher motorenable_pub_;
+      std_msgs::Bool enablemotor_msg_;
       bool setMotorAccelerationCallback(ccsr2_hub::motorAcceleration::Request&, ccsr2_hub::motorAcceleration::Response&);
       bool enableMotorsCallback(std_srvs::SetBool::Request&, std_srvs::SetBool::Response&);
 

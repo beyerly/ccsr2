@@ -3,12 +3,25 @@
     -->
 	<arg name="map_file" default="$(find ccsr2_main)/maps/map.yaml"/>
 	<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" machine="nuc"/>
+	<node name="fake_localization" pkg="fake_localization" type="fake_localization" machine="nuc">
+	  		<remap from="base_pose_ground_truth" to="odom"/>
+	</node>
+	
   	<node pkg="move_base" type="move_base" respawn="false" name="move_base"   machine="nuc">
   		<remap from="cmd_vel" to="twist"/>
+	    <rosparam param="base_global_planner">"global_planner/GlobalPlanner"</rosparam>
+	    <rosparam param="base_local_planner">"base_local_planner/TrajectoryPlannerROS"</rosparam>
+	    <rosparam param="/move_base/navfnROS/visualize_potential_">true</rosparam>
+
+<!-- 
+	    <rosparam param="base_local_planner">"dwa_local_planner/DWAPlannerROS"</rosparam>
+	    <rosparam param="/move_base/DWAPlannerROS/publish_traj_pc">true</rosparam>
+    -->
 	    <rosparam file="$(find ccsr2_main)/parameters/costmap_common_params.yaml" command="load" ns="global_costmap" />
 	    <rosparam file="$(find ccsr2_main)/parameters/costmap_common_params.yaml" command="load" ns="local_costmap" />
 	    <rosparam file="$(find ccsr2_main)/parameters/local_costmap_params.yaml" command="load" />
 	    <rosparam file="$(find ccsr2_main)/parameters/global_costmap_params.yaml" command="load" />
 	    <rosparam file="$(find ccsr2_main)/parameters/base_local_planner_params.yaml" command="load" />
 	  </node>
+
 </launch>

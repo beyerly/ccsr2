@@ -16,8 +16,7 @@ roslaunch ccsr2_main image_annotation.launch &
 
 waitForNode /rmotor_driver
 waitForNode /lmotor_driver
-rosservice call /enablermotor true
-rosservice call /enablelmotor true
-
 waitForNode /rplidarNode
 rosservice call /stop_motor
+rosservice call /enablermotor true
+rosservice call /enablelmotor true

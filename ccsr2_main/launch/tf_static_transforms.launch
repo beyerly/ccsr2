@@ -8,6 +8,9 @@
 <node pkg="tf2_ros" type="static_transform_publisher" name="camera_broadcaster" args="0 0 0.4 0 0 0 1 base_link camera" machine="nuc"/>
 <node pkg="tf2_ros" type="static_transform_publisher" name="lwheel_broadcaster" args="0 0 0 0 0 0 1 base_link left_wheel" machine="nuc"/>
 <node pkg="tf2_ros" type="static_transform_publisher" name="rwheel_broadcaster" args="0 0 0 0 0 0 1 base_link right_wheel" machine="nuc"/>
+<node pkg="tf2_ros" type="static_transform_publisher" name="map_broadcaster" args="0 0 0 0 0 0 1 odom base_link" machine="nuc"/>
+<!-- 
 <node pkg="tf2_ros" type="static_transform_publisher" name="map_broadcaster" args="0 0 0 0 0 0 1 map odom" machine="nuc"/>
+    -->
 </launch>
 

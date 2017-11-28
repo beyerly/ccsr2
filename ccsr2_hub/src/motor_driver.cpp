@@ -3,6 +3,7 @@
 #include <wiringPiI2C.h>
 #include "ros/ros.h"
 #include "std_msgs/Float32.h"
+#include "std_msgs/Bool.h"
 #include "ccsr2_pi_sensact_hub/motor_driver.h"
 #include "ccsr2_hub/motorAcceleration.h"
 #include <sstream>
@@ -44,12 +45,14 @@ motorDriver::motorDriver() {
          ROS_INFO("Created %s motor_driver node, talking on I2C device %d on address %x", motor.c_str(), i2c_dev, MD22_I2C_ADDRESS);
       }
    }
-   std::string serviceName;
+   std::string serviceName, pubName;
 
    serviceName = "set" + motor + "Acceleration";
    setMotorAcceleration_srv_ = n.advertiseService(serviceName.c_str(), &motorDriver::setMotorAccelerationCallback, this);
    serviceName = "enable" + motor;
    enableMotors_srv_= n.advertiseService(serviceName.c_str(), &motorDriver::enableMotorsCallback, this);
+   pubName = "enable" + motor + "_event";
+   motorenable_pub_ = n.advertise<std_msgs::Bool>(pubName, 1);
 
 }
 
@@ -106,6 +109,8 @@ void motorDriver::updateSpeed(const std_msgs::Float32& msg) {
     else {
        ros::param::set("~motors_enabled", req.data);
        motorsEnabled = req.data;
+       enablemotor_msg_.data = req.data;
+       motorenable_pub_.publish(enablemotor_msg_);
        if (req.data) {
           ROS_INFO("Enabling motors for %s motor_driver", motor.c_str());
        }

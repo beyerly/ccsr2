@@ -1,17 +1,16 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(ccsr2_hub)
+project(rqt_ccsr2_dashboard)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++11)
+# add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
   rospy
-  std_msgs
-  message_generation
+  rqt_gui
+  rqt_gui_py
 )
 
 ## System dependencies are found with CMake's conventions
@@ -21,7 +20,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
 ## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
-# catkin_python_setup()
+catkin_python_setup()
 
 ################################################
 ## Declare ROS messages, services and actions ##
@@ -55,11 +54,11 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate services in the 'srv' folder
-add_service_files(
-   FILES
-   motorAcceleration.srv
+# add_service_files(
+#   FILES
+#   Service1.srv
 #   Service2.srv
-)
+# )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -69,10 +68,10 @@ add_service_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-   DEPENDENCIES
-   std_msgs
-)
+# generate_messages(
+#   DEPENDENCIES
+#   std_msgs  # Or other packages containing msgs
+# )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -105,8 +104,8 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES ccsr2_hub
-#  CATKIN_DEPENDS roscpp rospy std_msgs
+#  LIBRARIES rqt_ccsr2_dashboard
+#  CATKIN_DEPENDS rospy rqt_gui rqt_gui_py
 #  DEPENDS system_lib
 )
 
@@ -123,7 +122,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/ccsr2_hub.cpp
+#   src/${PROJECT_NAME}/rqt_ccsr2_dashboard.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -134,7 +133,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/ccsr2_hub_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/rqt_ccsr2_dashboard_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -186,38 +185,19 @@ include_directories(
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
 
+install(PROGRAMS scripts/rqt_ccsr2_dashboard
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
 #############
 ## Testing ##
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_ccsr2_hub.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_rqt_ccsr2_dashboard.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-
-
-
-include_directories(include ${catkin_INCLUDE_DIRS})
-
-# Only compile on Raspberry PI:
-execute_process(COMMAND uname -m  WORKING_DIRECTORY /bin OUTPUT_VARIABLE MACHINE_NAME)
-string(REGEX REPLACE "\n$" "" MACHINE_NAME "${MACHINE_NAME}")
-if("${MACHINE_NAME}" STREQUAL "armv7l")
-	add_executable(wheel_encoder_sim src/wheel_encoder_sim.cpp)
-	add_executable(wheel_encoder src/wheel_encoder.cpp)
-	add_executable(motor_driver src/motor_driver.cpp)
-	add_executable(power_monitor src/power_monitor.cpp)
-	add_executable(temp_sensor src/temp_sensor.cpp)
-	add_executable(range_sensors src/range_sensors.cpp)
-	target_link_libraries(wheel_encoder_sim ${catkin_LIBRARIES})
-	target_link_libraries(wheel_encoder ${catkin_LIBRARIES} wiringPi)
-	target_link_libraries(motor_driver ${catkin_LIBRARIES} wiringPi)
-	target_link_libraries(power_monitor ${catkin_LIBRARIES} wiringPi)
-	target_link_libraries(temp_sensor ${catkin_LIBRARIES} wiringPi)
-	target_link_libraries(range_sensors ${catkin_LIBRARIES} wiringPi)
-	# add_dependencies(talker beginner_tutorials_generate_messages_cpp)
-endif()

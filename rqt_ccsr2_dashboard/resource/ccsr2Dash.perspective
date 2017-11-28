@@ -1,0 +1,84 @@
+{
+  "keys": {}, 
+  "groups": {
+    "pluginmanager": {
+      "keys": {
+        "running-plugins": {
+          "type": "repr", 
+          "repr": "{u'rqt_ccsr2_dashboard/My Plugin': [1, 2]}"
+        }
+      }, 
+      "groups": {
+        "plugin__rqt_ccsr2_dashboard__My Plugin__1": {
+          "keys": {}, 
+          "groups": {
+            "dock_widget__Ccsr2DashboardUi": {
+              "keys": {
+                "dockable": {
+                  "type": "repr", 
+                  "repr": "True"
+                }, 
+                "parent": {
+                  "type": "repr", 
+                  "repr": "None"
+                }, 
+                "dock_widget_title": {
+                  "type": "repr", 
+                  "repr": "u'Form'"
+                }
+              }, 
+              "groups": {}
+            }
+          }
+        }, 
+        "plugin__rqt_ccsr2_dashboard__My Plugin__2": {
+          "keys": {}, 
+          "groups": {
+            "dock_widget__Ccsr2DashboardUi": {
+              "keys": {
+                "dockable": {
+                  "type": "repr", 
+                  "repr": "True"
+                }, 
+                "parent": {
+                  "type": "repr", 
+                  "repr": "None"
+                }, 
+                "dock_widget_title": {
+                  "type": "repr", 
+                  "repr": "u'Form (2)'"
+                }
+              }, 
+              "groups": {}
+            }
+          }
+        }
+      }
+    }, 
+    "mainwindow": {
+      "keys": {
+        "geometry": {
+          "type": "repr(QByteArray.hex)", 
+          "repr(QByteArray.hex)": "QtCore.QByteArray('01d9d0cb00020000000001b00000018b0000040700000368000001b0000001a7000004070000036800000001000000000780')", 
+          "pretty-print": "           h       h     "
+        }, 
+        "state": {
+          "type": "repr(QByteArray.hex)", 
+          "repr(QByteArray.hex)": "QtCore.QByteArray('000000ff00000000fd000000010000000300000258000001acfc0100000002fb00000066007200710074005f00630063007300720032005f00640061007300680062006f006100720064005f005f004d007900200050006c007500670069006e005f005f0031005f005f0043006300730072003200440061007300680062006f006100720064005500690000000000ffffffff0000009c00fffffffb00000066007200710074005f00630063007300720032005f00640061007300680062006f006100720064005f005f004d007900200050006c007500670069006e005f005f0032005f005f0043006300730072003200440061007300680062006f00610072006400550069010000000000000258000000b100ffffff000002580000000000000004000000040000000800000008fc00000001000000030000000100000036004d0069006e0069006d0069007a006500640044006f0063006b00570069006400670065007400730054006f006f006c0062006100720000000000ffffffff0000000000000000')", 
+          "pretty-print": "                 frqt_ccsr2_dashboard__My Plugin__1__Ccsr2DashboardUi          frqt_ccsr2_dashboard__My Plugin__2__Ccsr2DashboardUi                            6MinimizedDockWidgetsToolbar        "
+        }
+      }, 
+      "groups": {
+        "toolbar_areas": {
+          "keys": {
+            "MinimizedDockWidgetsToolbar": {
+              "type": "repr", 
+              "repr": "8"
+            }
+          }, 
+          "groups": {}
+        }
+      }
+    }
+  }
+}

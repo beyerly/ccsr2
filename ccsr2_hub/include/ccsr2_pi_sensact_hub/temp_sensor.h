@@ -5,6 +5,7 @@
  *      Author: robert
  */
 
+#include <std_srvs/SetBool.h>
 
 #define TEMP_SENS_SAMPLE_RATE 1 // Hz
 
@@ -22,13 +23,16 @@ class tempSensor {
    private:
       ros::NodeHandle n;
       int i2c_dev;
+      bool enabled_;
       sensor_msgs::Temperature temp_msg;
+      ros::ServiceServer enableTempSensor_srv_;
       std::string temp_frame_id_;
       ros::Publisher temp_pub_;
    public:
       tempSensor();
       double getTemperature();
       void publishTemp();
+      bool enableTempSensorCallback(std_srvs::SetBool::Request&, std_srvs::SetBool::Response&);
 };
 
 

@@ -1,15 +1,18 @@
 <launch>
-    <node name="range_sensors" pkg="ccsr2_hub" type="range_sensors" machine="pi">
-	</node>
+
+	<include file="$(find ccsr2_main)/launch/libuvc_camera.launch" />
     <node name="temp_sensor" pkg="ccsr2_hub" type="temp_sensor" machine="pi">
       <param name="frame_id" value="ccsr2_base" />
+	</node>
+
+<!-- 
+ 	<include file="$(find rplidar_ros)/launch/rplidar.launch" />
+    <node name="range_sensors" pkg="ccsr2_hub" type="range_sensors" machine="pi">
 	</node>
   	<node name="power_monitor" pkg="ccsr2_hub" type="power_monitor" machine="pi">
       <param name="frame_id" value="ccsr2_base" />
 	</node>
-
- 	<include file="$(find rplidar_ros)/launch/rplidar.launch" />
-	<include file="$(find ccsr2_main)/launch/libuvc_camera.launch" />
     <include file="$(find i2c_imu)/launch/i2c_imu.launch" />
+-->
 
 </launch>
