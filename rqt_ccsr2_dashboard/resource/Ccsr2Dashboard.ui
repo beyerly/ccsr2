@@ -6,98 +6,517 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>601</width>
-    <height>451</height>
+    <width>767</width>
+    <height>703</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="motorsOn">
+  <widget class="QDial" name="dial">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>10</y>
+     <x>670</x>
+     <y>340</y>
      <width>111</width>
+     <height>91</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QSlider" name="verticalSlider">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>10</y>
+     <width>29</width>
+     <height>160</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="spinBox">
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>160</y>
+     <width>48</width>
      <height>27</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Motors On</string>
-   </property>
   </widget>
-  <widget class="QCheckBox" name="leftMotorCheckbox">
+  <widget class="QPlainTextEdit" name="plainTextEdit">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>10</y>
-     <width>97</width>
-     <height>22</height>
+     <x>660</x>
+     <y>30</y>
+     <width>104</width>
+     <height>78</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Left</string>
+   <property name="plainText">
+    <string>test hello
+</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="rightMotorCheckbox">
+  <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>10</y>
-     <width>97</width>
-     <height>22</height>
+     <x>590</x>
+     <y>300</y>
+     <width>113</width>
+     <height>27</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Right</string>
-   </property>
   </widget>
-  <widget class="QCheckBox" name="checkBox">
+  <widget class="Line" name="line">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>50</y>
-     <width>97</width>
-     <height>22</height>
+     <x>520</x>
+     <y>460</y>
+     <width>211</width>
+     <height>16</height>
     </rect>
    </property>
-   <property name="text">
-    <string>RpLidar</string>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QCheckBox" name="checkBox_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>70</y>
-     <width>131</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Range Finders</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="tempSensorCheckbox">
+  <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>50</y>
-     <width>131</width>
-     <height>22</height>
+     <y>10</y>
+     <width>251</width>
+     <height>361</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Temp Sensor</string>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
    </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>130</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>C</string>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="currentDisp">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>120</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="progressBar">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>230</y>
+      <width>118</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>24</number>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="pmonCheckbox">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>170</y>
+      <width>131</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>power monitor</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>230</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>batt</string>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="tempGraphicsView">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>111</width>
+      <height>111</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="temperatureDisp">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>120</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="currentGraphicsView">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>10</y>
+      <width>111</width>
+      <height>111</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>300</y>
+      <width>120</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>sensors</string>
+    </property>
+    <widget class="QToolButton" name="toolButton">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>40</y>
+       <width>24</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>...</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>130</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>A</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="tempSensorCheckbox">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>190</y>
+      <width>131</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Temp Sensor</string>
+    </property>
+   </widget>
   </widget>
-  <widget class="QLCDNumber" name="temperatureDisp">
+  <widget class="QFrame" name="frame_2">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>0</y>
-     <width>121</width>
-     <height>41</height>
+     <x>20</x>
+     <y>10</y>
+     <width>271</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="motorsOn">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>111</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Motors On</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="rightMotorCheckbox">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>10</y>
+      <width>97</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Right</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="leftMotorCheckbox">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>10</y>
+      <width>97</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Left</string>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="speedLin">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>40</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="speedAng">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>100</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="poseY">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>160</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="poseX">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>160</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>80</y>
+      <width>91</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>linear speed</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>140</y>
+      <width>101</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>angular speed</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>200</y>
+      <width>91</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>pose X</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>200</y>
+      <width>91</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>pose Y</string>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="speedometerGraphicsView">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>111</width>
+      <height>111</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>50</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>m/s</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>110</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>m/s</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame_3">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>510</y>
+     <width>271</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QCheckBox" name="rpLidarCheckbox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>97</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>RpLidar</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="rangeFindersCheckbox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>131</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Range Finders</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame_4">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>290</y>
+     <width>271</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QCheckBox" name="faceDetectionCheckbox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>141</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Face Detection</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="imageAnnotationCheckbox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>161</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Image Annotation</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>200</y>
+     <width>85</width>
+     <height>27</height>
     </rect>
    </property>
   </widget>

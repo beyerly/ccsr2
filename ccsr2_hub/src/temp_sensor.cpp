@@ -17,7 +17,7 @@ tempSensor::tempSensor() {
    temp_pub_ = n.advertise<sensor_msgs::Temperature>("temperature", 1);
    n.param<std::string>("frame_id", temp_frame_id_, "temp_link");
    enableTempSensor_srv_= n.advertiseService("enable_temp_sensor", &tempSensor::enableTempSensorCallback, this);
-   enabled_ = true;
+   enabled_ = false;
    if ((i2c_dev = wiringPiI2CSetup(TMP102_ADDR)) < 0){
       ROS_ERROR("Failed to set up I2C device on address %x", TMP102_ADDR);
    }

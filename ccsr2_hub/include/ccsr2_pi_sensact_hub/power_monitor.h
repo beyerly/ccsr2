@@ -5,6 +5,9 @@
  *      Author: robert
  */
 
+
+#include <std_srvs/SetBool.h>
+
 #ifndef CCSR2_HUB_INCLUDE_CCSR2_PI_SENSACT_HUB_POWER_MONITOR_H_
 #define CCSR2_HUB_INCLUDE_CCSR2_PI_SENSACT_HUB_POWER_MONITOR_H_
 
@@ -65,6 +68,9 @@ class powerMonitor {
       sensor_msgs::BatteryState pmon_msg;
       std::string pmon_frame_id_;
       ros::Publisher pmon_pub_;
+      bool enabled_;
+      ros::ServiceServer enablePowerMonitor_srv_;
+
    public:
       powerMonitor();
       int updateCharge();
@@ -72,6 +78,8 @@ class powerMonitor {
       double getOperatingCurrent();
       void publishPower();
       double clip(double value, double max, double min);
+      bool enablePowerMonitorCallback(std_srvs::SetBool::Request& req, std_srvs::SetBool::Response& resp);
+
 };
 
 

@@ -20,3 +20,4 @@ waitForNode /rplidarNode
 rosservice call /stop_motor
 rosservice call /enablermotor true
 rosservice call /enablelmotor true
+rqt --perspective-file src/ccsr2/rqt_ccsr2_dashboard/resource/ccsr2Dash.perspective
